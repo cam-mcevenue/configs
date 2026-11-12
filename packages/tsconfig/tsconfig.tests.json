@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./base.json",
+  "extends": "./tsconfig.base.json",
   "include": [
     "${configDir}/packages/*/test/**/*.ts",
     "${configDir}/packages/*/test/**/*.json",
