@@ -1,0 +1,6 @@
+{
+  "extends": "@cam-mcevenue/tsconfig/base.json",
+  "compilerOptions": {
+    "types": ["vite-plus"]
+  }
+}

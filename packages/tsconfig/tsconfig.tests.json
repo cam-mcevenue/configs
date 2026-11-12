@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "include": [
+    "${configDir}/packages/*/test/**/*.ts",
+    "${configDir}/packages/*/test/**/*.json",
+    "${configDir}/packages/**/test/**/*.ts",
+    "${configDir}/packages/**/test/**/*.json"
+  ],
+  "exclude": ["**/node_modules/**", "**/dist/**"],
+  "compilerOptions": {
+    "rootDir": "${configDir}",
+    "noEmit": true,
+    "erasableSyntaxOnly": false,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "paths": {
+      // These path aliases allow a project to load internal modules in tests and to use other workspace
+      // packages in tests that would otherwise be considered cyclic dependencies (e.g. loading
+      // `@effect/sql-sqlite-node` in the test suite of `@effect/platform-node`, which itself depends on
+      // `@effect/platform-node`). Fill in per-project, relative to that project's own root.
+    },
+    "plugins": [
+      {
+        "name": "@effect/language-service",
+        "effectFn": ["untraced"],
+        "namespaceImportPackages": [],
+        "includeSuggestionsInTsc": false,
+        "ignoreEffectWarningsInTscExitCode": true,
+        "ignoreEffectErrorsInTscExitCode": false,
+        "diagnosticSeverity": {
+          "unknownInEffectCatch": "off",
+          "multipleEffectProvide": "off",
+          "unstableApiUsage": "off",
+          "effectFnOpportunity": "error"
+        }
+      }
+    ]
+  }
+}
