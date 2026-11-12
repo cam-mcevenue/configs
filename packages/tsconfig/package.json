@@ -5,5 +5,8 @@
     "./package.json": "./package.json",
     "./base.json": "./tsconfig.base.json",
     "./tests.json": "./tsconfig.tests.json"
+  },
+  "peerDependencies": {
+    "typescript": "^7.0.0"
   }
 }
